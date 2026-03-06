@@ -1,18 +1,23 @@
 {
   "name": "AI Agent Infrastructure",
-  "build": { "dockerfile": "Dockerfile" },
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "customizations": {
-    "extensions": ["anthropic.claude-code", "cline.vscode-cline"] 
+    "extensions": [
+      "anthropic.claude-code",
+      "cline.vscode-cline"
+    ]
   },
   "remoteUser": "node",
   // To use host windows ssh agent, set forwardAgent to true and ensure you have an ssh agent running on your host machine with the appropriate keys added.
   "forwardAgent": true,
   // "postCreateCommand": "npm install -g @anthropic-ai/claude-code",
-"postCreateCommand": "git config --global user.name 'irisor' && git config --global user.email '13061827+irisor@users.noreply.github.com' && git config --global --add safe.directory /workspaces/my-claudy && npm install -g @anthropic-ai/claude-code && echo 'alias claude=\"claude --model qwen3-coder:30b --dangerously-skip-permissions\"' >> ~/.bashrc",
+  "postCreateCommand": "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo 'Host github-private\n  HostName github.com\n  User git' > ~/.ssh/config && chmod 600 ~/.ssh/config && git config --global user.name 'irisor' && git config --global user.email '13061827+irisor@users.noreply.github.com' && git config --global --add safe.directory /workspaces/my-claudy && npm install -g @anthropic-ai/claude-code && echo 'alias claude=\"claude --model qwen3-coder:30b --dangerously-skip-permissions\"' >> ~/.bashrc",
   "containerEnv": {
     "ANTHROPIC_BASE_URL": "http://host.docker.internal:11434/v1",
     "ANTHROPIC_AUTH_TOKEN": "ollama",
     "ANTHROPIC_API_KEY": "ollama",
     "CLAUDE_MODEL": "qwen3-coder:30b"
-  }
+  },
 }

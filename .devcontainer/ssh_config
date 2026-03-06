@@ -1,0 +1,3 @@
+Host github-private
+  HostName github.com
+  User git
