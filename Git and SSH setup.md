@@ -68,7 +68,7 @@ Terminal: edit on host (VS Code)
   "build": { "dockerfile": "Dockerfile" },
   "remoteUser": "node",
   "forwardAgent": true,
-  "postCreateCommand": "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo 'Host github-private\n  HostName github.com\n  User git\n  IdentitiesOnly yes\n\nHost github-work\n  HostName github.com\n  User git\n  IdentitiesOnly yes' > ~/.ssh/config && chmod 600 ~/.ssh/config"
+  "postCreateCommand": "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo 'Host github-private\n  HostName github.com\n  User git\n\nHost github-work\n  HostName github.com\n  User git' > ~/.ssh/config && chmod 600 ~/.ssh/config"
 }
 ```
 
