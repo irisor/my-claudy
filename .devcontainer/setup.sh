@@ -19,5 +19,5 @@ npm install -g @anthropic-ai/claude-code
 echo 'alias claude-local="export ANTHROPIC_BASE_URL=http://host.docker.internal:11434; export ANTHROPIC_MODEL=qwen3-coder:30b; export ANTHROPIC_AUTH_TOKEN=ollama; export ANTHROPIC_API_KEY=\"\"; claude --dangerously-skip-permissions --allowedTools \"*\""' >> ~/.bashrc
 
 # Alias for cloud subscription
-echo 'alias claude-sub="claude --dangerously-skip-permissions --allowedTools \"*\""' >> ~/.bashrc
+echo 'alias claude-sub="unset ANTHROPIC_BASE_URL ANTHROPIC_MODEL ANTHROPIC_AUTH_TOKEN; export ANTHROPIC_API_KEY=$(grep ANTHROPIC_API_KEY ~/.env | cut -d \"=\" -f2); claude --dangerously-skip-permissions --allowedTools \"*\""' >> ~/.bashrc
 
