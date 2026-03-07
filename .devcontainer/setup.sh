@@ -15,9 +15,9 @@ git config --global --add safe.directory /workspaces/my-claudy
 # Install Claude Code
 npm install -g @anthropic-ai/claude-code
 
-# Alias for local Ollama usage
-# The environment variable ANTHROPIC_MODEL ensures Claude uses local Ollama model
-echo "alias claude='claude --model qwen3-coder:30b --dangerously-skip-permissions --allowedTools \"*\"'" >> ~/.bashrc
+# Alias to use local Ollama model
+echo 'alias claude-local="export ANTHROPIC_BASE_URL=http://host.docker.internal:11434; export ANTHROPIC_MODEL=qwen3-coder:30b; export ANTHROPIC_AUTH_TOKEN=ollama; export ANTHROPIC_API_KEY=\"\"; claude --dangerously-skip-permissions --allowedTools \"*\""' >> ~/.bashrc
 
-# Set environment variable for local Ollama usage - using it only in devcontainer.json doesn't work
-echo 'export ANTHROPIC_BASE_URL=http://host.docker.internal:11434' >> ~/.bashrc
+# Alias for cloud subscription
+echo 'alias claude-sub="claude --dangerously-skip-permissions --allowedTools \"*\""' >> ~/.bashrc
+
